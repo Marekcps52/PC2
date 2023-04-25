@@ -1,7 +1,4 @@
-#include <stdlib.h>
-
-char kurzorMark[]="~     ";
-int kurzor=0;
+#include "kurzor.h"
 
 void kurzorUP(){
     kurzorMark[kurzor]=' ';

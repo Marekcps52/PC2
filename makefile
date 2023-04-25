@@ -8,12 +8,15 @@ OBJ=$(SRC:.c=.o)
 all: main
 
 main: $(OBJ)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $^ -o $@ $(LDFLAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) main
+
+run: all
+	./main
 
 .PHONY: all clean

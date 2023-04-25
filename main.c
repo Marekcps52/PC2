@@ -1,8 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
-#include "kurzor.c"
+#include "kurzor.h"
 
+#define INFO "HELLO THIS IS PRINTABLE SHIT \n \
+this is text on new line\n \
+author tvoja matka\n"
+
+char kurzorMark[]="~    ";
+int kurzor=0;
 
 int main(){
     initscr();          //inicializece knihovny ncurses
@@ -27,6 +33,9 @@ int main(){
             case 'c':
                 endwin();           //ukonceni programu a reset nastaveni terminalu
                 return 0;
+            case 'i':
+                printw(INFO);
+                break;
         }
     }
     return 0;
