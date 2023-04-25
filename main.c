@@ -2,10 +2,14 @@
 #include <stdlib.h>
 #include <ncurses.h>
 #include "kurzor.h"
+#include "info.h"
 
-#define INFO "HELLO THIS IS PRINTABLE SHIT \n \
-this is text on new line\n \
-author tvoja matka\n"
+#define WELCOME "pro pohyb v menu pouzijte w-nahoru \n \
+s-dolu\n \
+d- potvrzeni vyberu \n \
+a- navrat zpet \n \
+pro pokracovani stiskni cokoliv"
+
 
 char kurzorMark[]="~    ";
 int kurzor=0;
@@ -14,6 +18,14 @@ int main(){
     initscr();          //inicializece knihovny ncurses
     cbreak();           //vypnuti bufferu
     noecho();           //vypnuti vypisovani klavesnice
+    clear();
+    
+    printw(WELCOME);
+    // while(1){
+    //     if(getch()=='\n')
+    //     break;
+    // }
+    getch();
 
     while(1){
         clear();
@@ -23,9 +35,7 @@ int main(){
         printw("exit %c \n",kurzorMark[3]);
         switch(getch()){
             case 's':
-                kurzorMark[kurzor]=' ';
-                kurzor++;
-                kurzorMark[kurzor]='~';
+                kurzorDOWN();
                 break;
             case 'w':
                 kurzorUP();
@@ -36,6 +46,16 @@ int main(){
             case 'i':
                 printw(INFO);
                 break;
+            case 'd':
+                switch(kurzor){
+                    case 2:
+                    info();
+                    break;
+                    case 3:
+                    endwin();
+                    return 0;
+
+                }
         }
     }
     return 0;

@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall -Wextra -pedantic -std=c99
 LDFLAGS=-lncurses
 
-SRC=main.c kurzor.c
+SRC=main.c kurzor.c info.c
 OBJ=$(SRC:.c=.o)
 
 all: main
