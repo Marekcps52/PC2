@@ -12,5 +12,6 @@ extern int kurzor;
 
 void kurzorDOWN();
 void kurzorUP();
+void kurzorConfig();
 
 #endif

@@ -3,8 +3,10 @@
 #include <ncurses.h>
 #include "kurzor.h"
 #include "info.h"
+#include "seznam.h"
 
-#define WELCOME "pro pohyb v menu pouzijte w-nahoru \n \
+#define WELCOME "pro pohyb v menu pouzijte \n\
+ w-nahoru \n \
 s-dolu\n \
 d- potvrzeni vyberu \n \
 a- navrat zpet \n \
@@ -15,24 +17,18 @@ char kurzorMark[]="~    ";
 int kurzor=0;
 
 int main(){
-    initscr();          //inicializece knihovny ncurses
-    cbreak();           //vypnuti bufferu
-    noecho();           //vypnuti vypisovani klavesnice
-    clear();
+    kurzorConfig();
     
-    printw(WELCOME);
-    // while(1){
-    //     if(getch()=='\n')
-    //     break;
-    // }
+    printw(WELCOME);            //uvitaci zprava, ceka na stisk klavesy
     getch();
 
     while(1){
         clear();
-        printw("menu %c \n",kurzorMark[0]);
+        printw("Seznam restauraci  %c \n",kurzorMark[0]);
         printw("radek %c \n",kurzorMark[1]);
         printw("info %c \n",kurzorMark[2]);
         printw("exit %c \n",kurzorMark[3]);
+       // printw("\n\n\n h-help");e
         switch(getch()){
             case 's':
                 kurzorDOWN();
@@ -40,20 +36,28 @@ int main(){
             case 'w':
                 kurzorUP();
                 break;
-            case 'c':
+            case 'e':               //exit
                 endwin();           //ukonceni programu a reset nastaveni terminalu
                 return 0;
             case 'i':
-                printw(INFO);
+                printw(INFO);        
                 break;
-            case 'd':
+            case 'h':
+                printw(WELCOME);            //uvitaci zprava, ceka na stisk klavesy
+                getch();
+            case 'd':                 //otevreni submenu
                 switch(kurzor){
+                    case 0:
+                        seznam();
+                        break;
+                    case 1:
+                        //volat 
                     case 2:
-                    info();
-                    break;
+                        info();
+                        break;
                     case 3:
-                    endwin();
-                    return 0;
+                        endwin();
+                        return 0;
 
                 }
         }

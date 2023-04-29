@@ -3,10 +3,7 @@
 void seznam(){
 
     kurzorConfig();
-    printw("seznam... %c \n", kurzorMark[0]);
-    printw("seznam... %c \n", kurzorMark[0]);
-    printw("seznam... %c \n", kurzorMark[0]);
-    printw("seznam... %c \n", kurzorMark[0]);
+    
     while(1){
         switch(getch()){
             case 's':

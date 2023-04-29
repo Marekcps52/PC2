@@ -3,9 +3,11 @@
 
 #include <stdlib.h>
 #include <ncurses.h>
-#define INFO "HELLO THIS IS PRINTABLE INFO \n \
-put here info about app\
-line 3 "
+#define INFO "  \n \
+                O APLIKACI \n \
+Tato aplikace funuguje jako seznam restauracnich zarizeni\n \
+s moznosti s moznosti pridavani nove vzniklych podniku a recenzovani\n \
+zakazniky"
 
 void info();
 

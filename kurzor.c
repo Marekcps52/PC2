@@ -1,4 +1,5 @@
 #include "kurzor.h"
+#include <ncurses.h>
 
 void kurzorUP(){
     kurzorMark[kurzor]=' ';
@@ -16,3 +17,12 @@ void kurzorDOWN(){
     kurzorMark[kurzor]='~';
 }
 
+void kurzorConfig(){
+    kurzorMark[kurzor]=' ';
+    kurzor=0;
+    kurzorMark[kurzor]='~';
+    initscr();          //inicializece knihovny ncurses
+    cbreak();           //vypnuti bufferu
+    noecho();           //vypnuti vypisovani klavesnice
+    clear();
+}
