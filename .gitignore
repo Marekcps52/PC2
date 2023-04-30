@@ -1,2 +1,6 @@
 *.o
+*.csv
+*.txt
+*.xlsx
 main
+a.out
