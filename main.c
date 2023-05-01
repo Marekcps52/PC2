@@ -4,6 +4,8 @@
 #include "kurzor.h"
 #include "info.h"
 #include "seznam.h"
+#include "cti.h"
+
 
 #define WELCOME "pro pohyb v menu pouzijte \n\
  w-nahoru \n \
@@ -12,7 +14,17 @@ d- potvrzeni vyberu \n \
 a- navrat zpet \n \
 pro pokracovani stiskni cokoliv"
 
-
+/*struct Restaurant{
+    char name[20];
+    char date[20];
+    char owner[20];
+    char review1[100];
+    char review2[100];
+    char review3[100];
+    char review4[100];
+    char review5[100];
+}
+*/
 char kurzorMark[]="~    ";
 int kurzor=0;
 
@@ -25,7 +37,7 @@ int main(){
     while(1){
         clear();
         printw("Seznam restauraci  %c \n",kurzorMark[0]);
-        printw("radek %c \n",kurzorMark[1]);
+        printw("nacti soubory %c \n",kurzorMark[1]);
         printw("info %c \n",kurzorMark[2]);
         printw("exit %c \n",kurzorMark[3]);
        // printw("\n\n\n h-help");e
@@ -51,7 +63,8 @@ int main(){
                         seznam();
                         break;
                     case 1:
-                        //volat 
+                        nactiSoubory(); 
+                        break;
                     case 2:
                         info();
                         break;

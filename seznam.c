@@ -6,7 +6,7 @@ void seznam(){
     
     while(1){
         clear();
-        printw();
+       // printw();
         switch(getch()){
             case 's':
                 kurzorDOWN();
@@ -18,10 +18,11 @@ void seznam(){
                 endwin();
                 return;
             case 'd' :
-                switch(kurzor){
+                /*switch(kurzor){
                     case 1 :
 
-                }
+                }*/
+                break;
         }
     }
 }
