@@ -1,4 +1,5 @@
 *.o
+R:*
 *.csv
 *.txt
 *.xlsx

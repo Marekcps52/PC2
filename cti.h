@@ -16,4 +16,4 @@ struct Restaurant {
 
 void nactiSoubory();
 
-#endif /* _CTI_H_ */
+#endif 

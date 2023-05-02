@@ -14,17 +14,31 @@ d- potvrzeni vyberu \n \
 a- navrat zpet \n \
 pro pokracovani stiskni cokoliv"
 
-/*struct Restaurant{
-    char name[20];
-    char date[20];
-    char owner[20];
-    char review1[100];
-    char review2[100];
-    char review3[100];
-    char review4[100];
-    char review5[100];
-}
-*/
+/*char recenze[]
+
+struct nacteneData{
+    char nazev[20];
+    char datum[10];
+    char adresa[30];
+    char recenze[100];
+    char recenze2[100];
+    char recenze3[100];
+    char recenze4[100];
+    char recenze5[100];
+    char recenze6[100];
+    char recenze7[100];
+    char recenze8[100];
+    char recenze9[100];
+};
+
+struct nacteneData restaurant1;
+struct nacteneData restaurant2;
+struct nacteneData restaurant3;
+struct nacteneData restaurant4;
+struct nacteneData restaurant5;*/
+
+int max_radky= 3;
+
 char kurzorMark[]="~    ";
 int kurzor=0;
 

@@ -5,14 +5,14 @@ void kurzorUP(){
     kurzorMark[kurzor]=' ';
     kurzor--;
     if(kurzor<MIN_RADKY)
-        kurzor=MAX_RADKY;
+        kurzor=max_radky;
     kurzorMark[kurzor]='~';
 }
 
 void kurzorDOWN(){
     kurzorMark[kurzor]=' ';
     kurzor++;
-    if(kurzor>MAX_RADKY)
+    if(kurzor>max_radky)
         kurzor=MIN_RADKY;
     kurzorMark[kurzor]='~';
 }
@@ -24,5 +24,5 @@ void kurzorConfig(){
     initscr();          //inicializece knihovny ncurses
     cbreak();           //vypnuti bufferu
     noecho();           //vypnuti vypisovani klavesnice
-    clear();
+    clear();            //vycisteni terminalu
 }

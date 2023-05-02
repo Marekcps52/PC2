@@ -1,11 +1,9 @@
 #ifndef KURZOR_H
 #define KURZOR_H
-
-#define MAX_RADKY 3
-#define MIN_RADKY 0
-
 #include <stdlib.h>
 
+#define MIN_RADKY 0
+extern int max_radky;
 extern char kurzorMark[];
 extern int kurzor;
 
