@@ -2,14 +2,15 @@
 #include "kurzor.h"
 #include <dirent.h>
 #include <string.h>
+#include "vypis.h"
 
 void seznam(){
     int pocetSouboru=0;
     char nazvy[100][20]={0};
     DIR *dir;
     struct dirent *entry;
-    
     kurzorConfig();
+    
     dir = opendir(".");
     if (dir == NULL)
         printw("zaznamy nenalezeny!");
@@ -44,11 +45,10 @@ void seznam(){
                 endwin();
                 return;
             case 'd' :
-                /*switch(kurzor){
-                    case 1 :
-
-                }*/
+                vypis(nazvy);
+                
                 break;
         }
     }
+
 }

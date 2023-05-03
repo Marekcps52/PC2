@@ -20,7 +20,7 @@ struct nacteneData{
     char nazev[20];
     char datum[10];
     char adresa[30];
-    char recenze[100];
+    char recenze1[100];
     char recenze2[100];
     char recenze3[100];
     char recenze4[100];
