@@ -2,7 +2,7 @@
 #include "kurzor.h"
 #include <dirent.h>
 #include <string.h>
-#include "vypis.h"
+//#include "vypis.h"
 
 void seznam(){
     int pocetSouboru=0;
