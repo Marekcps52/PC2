@@ -16,12 +16,15 @@ pro pokracovani stiskni cokoliv"
 
 
 
-int max_radky= 3;
 
-char kurzorMark[]="~  s";
+char kurzorMark[100]={ };
+
+int max_radky= 3;
 int kurzor=0;
 
 int main(){
+    for(int l=0;l<=100;l++)kurzorMark[l]=' ';
+
     kurzorConfig();
     
     printw(WELCOME);            //uvitaci zprava, ceka na stisk klavesy
