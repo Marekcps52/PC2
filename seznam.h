@@ -5,5 +5,6 @@
 #include <ncurses.h>
 
 void seznam();
+void novaRestaurace();
 
 #endif

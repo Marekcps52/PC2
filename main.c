@@ -3,6 +3,7 @@
 #include <ncurses.h>
 #include "kurzor.h"
 #include "info.h"
+#include "seznam.h"
 
 
 #define WELCOME "pro pohyb v menu pouzijte \n\
@@ -13,18 +14,6 @@ a- navrat zpet \n \
 pro pokracovani stiskni cokoliv"
 
 
-typedef struct {
-    char nazev[20];
-    char datum[10];
-    char adresa[30];
-    char recenze[100];
-}Data_t;
-
-typedef struct List
-{
-    LIST_t *ocas;
-    Data_t restaurace;
-}LIST_t;
 
 
 int max_radky= 3;
@@ -38,17 +27,16 @@ int main(){
     printw(WELCOME);            //uvitaci zprava, ceka na stisk klavesy
     getch();
 
-    FILE *file;
+    /*FILE *file;
     file = fopen("data.csv", "a+");
-    LIST_t *seznam = NULL;
+    LIST *seznam = NULL;*/
 
     while(1){
         clear();
         printw("Seznam restauraci  %c \n",kurzorMark[0]);
-        printw("nacti soubor %c \n",kurzorMark[1]);
+        printw("Pridej restauraci %c \n",kurzorMark[1]);
         printw("info %c \n",kurzorMark[2]);
         printw("exit %c \n",kurzorMark[3]);
-       // printw("\n\n\n h-help");e
         switch(getch()){
             case 's':
                 kurzorDOWN();
@@ -68,10 +56,10 @@ int main(){
             case 'd':                 //otevreni submenu
                 switch(kurzor){
                     case 0:
-                        //seznam();
+                        //seznamPrint();
                         break;
                     case 1:
-                        nactiSoubory(); 
+                        novaRestaurace();
                         break;
                     case 2:
                         info();

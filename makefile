@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall -Wextra -pedantic -std=c99
 LDFLAGS=-lncurses
 
-SRC=main.c kurzor.c info.c seznam.c cti.c vypis.c
+SRC=main.c kurzor.c info.c seznam.c 
 
 OBJ=$(SRC:.c=.o)
 
