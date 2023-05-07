@@ -18,7 +18,7 @@ pro pokracovani stiskni cokoliv"
 
 int max_radky= 3;
 
-char kurzorMark[]="~    ";
+char kurzorMark[]="~  s";
 int kurzor=0;
 
 int main(){
@@ -27,11 +27,9 @@ int main(){
     printw(WELCOME);            //uvitaci zprava, ceka na stisk klavesy
     getch();
 
-    /*FILE *file;
-    file = fopen("data.csv", "a+");
-    LIST *seznam = NULL;*/
 
     while(1){
+        max_radky= 3;
         clear();
         printw("Seznam restauraci  %c \n",kurzorMark[0]);
         printw("Pridej restauraci %c \n",kurzorMark[1]);
@@ -56,7 +54,7 @@ int main(){
             case 'd':                 //otevreni submenu
                 switch(kurzor){
                     case 0:
-                        //seznamPrint();
+                        seznam();
                         break;
                     case 1:
                         novaRestaurace();
