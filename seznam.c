@@ -6,6 +6,9 @@
 #include <string.h>
 #include <dirent.h>
 
+char blank;
+int h;
+
 typedef struct recenze{
     char autor[20];
     char text[200];
@@ -47,6 +50,7 @@ void seznam(){
             t_restaurace* nova = (t_restaurace *) malloc(sizeof(t_restaurace));
             FILE *fp;
             fp = fopen(entry->d_name, "r");
+
             fscanf(fp,"%s",nova->nazev);
             fscanf(fp,"%s",nova->adresa);
             fscanf(fp,"%s",nova->datum);
@@ -55,13 +59,17 @@ void seznam(){
                 if(!feof(fp)){
                     nova->recenze[j]=(t_recenze *) malloc(sizeof(t_recenze));
                     fscanf(fp, "%s", nova->recenze[j]->autor);
-                    fscanf(fp, "%s", nova->recenze[j]->text);
+                    while (fscanf(fp, "%c", &blank) == 1 && blank != ';') {
+                        nova->recenze[j]->text[h++] = blank;
+                    }  
+                    nova->recenze[j]->text[h] = '\0';
+                    h=0;
+                    
                     fscanf(fp, "%d", &(nova->recenze[j]->hodnoceni));
                 }
             }
             
             fclose(fp);
-
             for(int i=0;i<100;i++){
                 if(restaurace[i]==NULL){
                     restaurace[i]=nova;
@@ -72,6 +80,12 @@ void seznam(){
         }
     }
     closedir(dir);
+
+    if(restaurace[0]==NULL) {
+        printw("zadne zaznamy!!!");
+        getch();
+        return;
+        }
 
     kurzorConfig();
     while(1){
@@ -94,24 +108,66 @@ void seznam(){
             case'a':
                 return;
             case'd':
-                //switch(kurzor){
-                    //case 0:
+                while(1){
                         clear();
-                        printw("%s: \n", restaurace[kurzor]->nazev);
+                        printw("%s \n", restaurace[kurzor]->nazev);
                         printw("Adresa: %s \n", restaurace[kurzor]->adresa);
                         printw("Datum zalozeni: %s\n", restaurace[kurzor]->datum);
-                        printw("pocet hvezd: %d\n\n,", restaurace[kurzor]->hvezdy);
+                        printw("pocet hvezd: %d\n\n", restaurace[kurzor]->hvezdy);
                             for (int j=0; j<20;j++){
                                 if(restaurace[kurzor]->recenze[j]!=NULL)   { 
                                     printw("Autor: %s:\t", restaurace[kurzor]->recenze[j]->autor);
                                     printw("%s\n", restaurace[kurzor]->recenze[j]->text);
-                                    printw("Hodnoceni: %d/10\n", restaurace[kurzor]->recenze[j]->hodnoceni);
+                                    printw("Hodnoceni: %d/10\n\n", restaurace[kurzor]->recenze[j]->hodnoceni);
                                 }
                             }
-                        getch();
-                    //case 'a':
-                      //  return;
-                //}
+                        printw("a-navrat, r-nova recenze");
+                        switch(getch()){
+                            case 'a':
+                                return;
+                            case 'r':
+                                
+                                clear();
+                                char soubor[20]={0};
+                                strcpy(soubor,restaurace[kurzor]->nazev);
+                                strcat(soubor,".txt");
+                                FILE *fp;
+                                fp=fopen(soubor,"a+");
+                                 if(fp==NULL){
+                                    printw("Chyba souboru");
+                                }
+                                char vstup[100];
+                                
+                                printw("Zadejte sve jmeno:\t");
+                                scanf("%s", vstup);
+                                fflush(stdin);
+                                fputs(vstup,fp);
+                                fputs("\n",fp); 
+                                system("clear");
+
+                                char buffer[100];
+                                int i=0;
+                                endwin();
+                                printf("Zadejte text recenze ukonceny strednikem ';':\t");
+                                while(1){
+                                    int c=getchar();
+                                    if (c==';'){
+                                        buffer[i]='\0';
+                                        break;
+                                    }
+                                    buffer[i++]=c;
+                                }
+                                
+                                
+                                fclose(fp);
+                                system("clear");
+                                
+                                
+                                return;
+
+
+                        }
+                }
         }
     }
     return;

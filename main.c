@@ -17,7 +17,7 @@ pro pokracovani stiskni cokoliv"
 
 
 
-char kurzorMark[100]={ };
+char kurzorMark[100]={0};
 
 int max_radky= 3;
 int kurzor=0;
@@ -38,6 +38,7 @@ int main(){
         printw("Pridej restauraci %c \n",kurzorMark[1]);
         printw("info %c \n",kurzorMark[2]);
         printw("exit %c \n",kurzorMark[3]);
+        printw("\n e-exit");
         switch(getch()){
             case 's':
                 kurzorDOWN();
