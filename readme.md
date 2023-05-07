@@ -1,6 +1,6 @@
 **************************************************
 ### Author: Marian Mendrok
-### Created: 22.4.2003
+### Created: 22.4.2023
 ### Released: NOT
 **************************************************
 Pro pohyb v menu pouzijte napovedu v horni 
